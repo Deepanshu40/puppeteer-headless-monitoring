@@ -25,7 +25,7 @@ const checkPath = (pathToCheck) => {
 
         fs.readdir(directoryPath, (err, files) => {
         if (err) {
-            console.log('Error getting directory information.');
+            console.log('Error getting directory information.', err);
             // return res.status(500).send('Failed to read directory');
         }
 
