@@ -2,7 +2,6 @@ const express  = require('express');
 const app = express();
 const port = 8080;
 const puppeteer = require('puppeteer');
-
 const fs = require('fs');
 const path = require('path');
 
@@ -20,9 +19,22 @@ const checkPath = (pathToCheck) => {
 };
 
 // Use this function in your Puppeteer setup code
+
+app.get('/list-files', (req, res) => {
+    const directoryPath = '/opt/render/.cache/puppeteer/chrome/linux-124.0.6367.91';
+
+    fs.readdir(directoryPath, (err, files) => {
+        if (err) {
+            console.log('Error getting directory information.');
+            return res.status(500).send('Failed to read directory');
+        }
+
+        res.send(files);
+    });
+});
+
 const chromiumPath = '/opt/render/.cache/puppeteer/chrome/linux-124.0.6367.91/chrome';
 checkPath(chromiumPath);
-
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
