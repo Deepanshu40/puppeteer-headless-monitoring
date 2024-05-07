@@ -12,7 +12,7 @@ const puppeteerSession = async () => {
     try {
         const browserInstance = await puppeteer.launch({
             headless:true,
-            // executablePath: '', will be specified later
+            executablePath: '/opt/render/.cache/puppeteer/chrome/linux-124.0.6367.91',
         });
         const page = await browserInstance.newPage();
         await page.goto('https://en.wikipedia.org/wiki/Ram_Charan', { waitUntil: 'networkidle0' });
