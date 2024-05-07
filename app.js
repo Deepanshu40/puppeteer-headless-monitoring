@@ -20,18 +20,18 @@ const checkPath = (pathToCheck) => {
 
 // Use this function in your Puppeteer setup code
 
-app.get('/list-files', (req, res) => {
+// app.get('/list-files', (req, res) => {
     const directoryPath = '/opt/render/.cache/puppeteer/chrome/linux-124.0.6367.91';
 
-    fs.readdir(directoryPath, (err, files) => {
+        fs.readdir(directoryPath, (err, files) => {
         if (err) {
             console.log('Error getting directory information.');
             return res.status(500).send('Failed to read directory');
         }
 
-        res.send(files);
+        console.log(files);
     });
-});
+// });
 
 const chromiumPath = '/opt/render/.cache/puppeteer/chrome/linux-124.0.6367.91/chrome';
 checkPath(chromiumPath);
