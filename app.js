@@ -3,6 +3,26 @@ const app = express();
 const port = 8080;
 const puppeteer = require('puppeteer');
 
+const fs = require('fs');
+const path = require('path');
+
+const checkPath = (pathToCheck) => {
+    try {
+        // Check if the file exists in the given path
+        if (fs.existsSync(pathToCheck)) {
+            console.log(`Found at: ${pathToCheck}`);
+        } else {
+            console.log(`Not found: ${pathToCheck}`);
+        }
+    } catch (err) {
+        console.error('Error checking path:', err);
+    }
+};
+
+// Use this function in your Puppeteer setup code
+const chromiumPath = '/opt/render/.cache/puppeteer/chrome/linux-124.0.6367.91/chrome';
+checkPath(chromiumPath);
+
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
